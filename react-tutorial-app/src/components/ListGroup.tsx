@@ -12,7 +12,7 @@
 //     <>
 //       <ul className="list-group">
 //         {items.map((city) => (
-//           <li>{city}</li>
+//           <li key={city.id}>{city}</li>
 //         ))}
 //       </ul>
 //     </>
@@ -22,9 +22,11 @@
 // export default ListGroup;
 
 import React from "react";
+import { MouseEvent } from "react";
+import { useState } from "react";
 
 function ListGroup(): JSX.Element {
-  const items: string[] = [
+  let items: string[] = [
     "Sylhet",
     "Dhaka",
     "Khulna",
@@ -33,11 +35,39 @@ function ListGroup(): JSX.Element {
     "Rajshahi",
   ];
 
+  //Hook: useState
+  const [selectedIndex, setselectedIndex] = useState(2);
+
+  //items = [];
+
+  //Event Handler
+  const handleClick = (event: MouseEvent) => console.log(event);
+
   return (
     <>
+      <h1>List</h1>
+
+      {
+        /*conditional rendering*/
+        items.length === 0 && <p>No item found</p>
+      }
       <ul className="list-group">
-        {items.map((item: string) => (
-          <li key={item}>{item}</li>
+        {items.map((city: string, index: number) => (
+          <li
+            className={
+              selectedIndex === index
+                ? "list-group-item active"
+                : "list-group-item"
+            }
+            key={city}
+            /*event handling 
+        onClick={(event) => console.log(city, index, event.timeStamp)}*/
+            onClick={(event) => {
+              setselectedIndex(index), console.log(event, city);
+            }}
+          >
+            {city}
+          </li>
         ))}
       </ul>
     </>
