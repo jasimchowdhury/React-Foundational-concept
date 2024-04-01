@@ -25,17 +25,24 @@ import React from "react";
 import { MouseEvent } from "react";
 import { useState } from "react";
 
-function ListGroup(): JSX.Element {
-  let items: string[] = [
-    "Sylhet",
-    "Dhaka",
-    "Khulna",
-    "Borishal",
-    "Chittagong",
-    "Rajshahi",
-  ];
+// {items: [], heading: string}
+interface PropsGroupList {
+  items: string[];
+  heading: string;
+}
+// using props inside ListGroup()
+//function ListGroup(props: PropsGroupList):
+function ListGroup({ items, heading }: PropsGroupList): JSX.Element {
+  //   let items: string[] = [
+  //     "Sylhet",
+  //     "Dhaka",
+  //     "Khulna",
+  //     "Borishal",
+  //     "Chittagong",
+  //     "Rajshahi",
+  //   ];
 
-  //Hook: useState
+  //Hook: useState,
   const [selectedIndex, setselectedIndex] = useState(2);
 
   //items = [];
@@ -45,28 +52,28 @@ function ListGroup(): JSX.Element {
 
   return (
     <>
-      <h1>List</h1>
+      <h1>{heading}</h1>
 
       {
         /*conditional rendering*/
         items.length === 0 && <p>No item found</p>
       }
       <ul className="list-group">
-        {items.map((city: string, index: number) => (
+        {items.map((district: string, index: number) => (
           <li
             className={
               selectedIndex === index
                 ? "list-group-item active"
                 : "list-group-item"
             }
-            key={city}
+            key={district}
             /*event handling 
         onClick={(event) => console.log(city, index, event.timeStamp)}*/
             onClick={(event) => {
-              setselectedIndex(index), console.log(event, city);
+              setselectedIndex(index), console.log(district);
             }}
           >
-            {city}
+            {district}
           </li>
         ))}
       </ul>
