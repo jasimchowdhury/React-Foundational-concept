@@ -6,11 +6,6 @@ A React application showcasing dynamic list rendering and state management.
 - [Objective](#objective)
 - [Skills](#skills)
 - [Contributions](#contributions)
-- [Getting Started](#getting-started)
-- [Running the Application](#running-the-application)
-- [Building the Application](#building-the-application)
-- [Testing the Application](#testing-the-application)
-- [License](#license)
 
 ## Objective
 A dedicated and innovative React Developer with experience in building dynamic and responsive web applications using modern JavaScript frameworks. This project is created to demonstrate the skills in React, TypeScript, and front-end development.
